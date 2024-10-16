@@ -54,21 +54,21 @@ class CourseUnitResource extends Resource
                 Tables\Columns\TextColumn::make('module.title'),
             ])
             ->actions([
-                Action::make('units')->url(fn($record): string => url('admin/courses/modules/'.$record->id)),
+                Action::make('units')->url(fn($record): string => url('admin/courses/modules/' . $record->id)),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListCourseUnits::route('/'),
             'modules' => Pages\ListCourseUnits::route('/{record}'),
-            'modules/units' => Pages\CreateCourseUnit::route('/create'),
+            'modules/units' => Pages\CreateCourseUnit::route('/{record}/create'),
             'edit' => Pages\EditCourseUnit::route('/{record}/edit'),
         ];
-    }    
+    }
 }
